@@ -1,0 +1,99 @@
+{
+  "name": "Tab Suspender",
+  "description": "Reduce memory usage by suspending inactive tabs",
+  "version": "8.2.0",
+  "manifest_version": 3,
+  "minimum_chrome_version": "110",
+  "permissions": [
+    "tabs",
+    "storage",
+    "contextMenus",
+    "alarms",
+    "favicon"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "The Marvellous Suspender",
+    "default_icon": {
+      "16": "public/icons/icon-16.png",
+      "32": "public/icons/icon-32.png"
+    },
+    "default_popup": "src/pages/popup/popup.html"
+  },
+  "options_page": "src/pages/settings/options.html",
+  "icons": {
+    "16": "public/icons/icon-16.png",
+    "32": "public/icons/icon-32.png",
+    "48": "public/icons/icon-48.png",
+    "128": "public/icons/icon-128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/pages/suspended/suspended.html",
+        "public/icons/*",
+        "public/images/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content/content-script.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self'; default-src 'self'"
+  },
+  "incognito": "split",
+  "commands": {
+    "toggle-suspend-tab": {
+      "description": "Suspend/Unsuspend active tab",
+      "suggested_key": {
+        "default": "Alt+S"
+      }
+    },
+    "toggle-domain-whitelist": {
+      "description": "Toggle domain whitelist for this tab"
+    },
+    "suspend-selected": {
+      "description": "Suspend selected tabs"
+    },
+    "unsuspend-selected": {
+      "description": "Unsuspend selected tabs"
+    },
+    "suspend-other-tabs": {
+      "description": "Suspend other tabs in window"
+    },
+    "force-suspend-other-tabs": {
+      "description": "Force suspend other tabs in window"
+    },
+    "unsuspend-window": {
+      "description": "Unsuspend all tabs in window"
+    },
+    "suspend-all": {
+      "description": "Suspend all tabs"
+    },
+    "force-suspend-all": {
+      "description": "Force suspend all tabs"
+    },
+    "unsuspend-all": {
+      "description": "Unsuspend all tabs"
+    }
+  }
+}

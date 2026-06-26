@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Tab Suspender Settings</title>
+
+  <link rel="stylesheet" href="options.css">
+  <script type="module" src="options.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header class="app-header">
+      <h1>Tab Suspender</h1>
+      <p>Modern tab management settings</p>
+    </header>
+
+    <section class="settings-group">
+
+      <h2>General</h2>
+
+      <div class="setting-row">
+        <div>
+          <div class="setting-title">Automatically suspend tabs after</div>
+        </div>
+
+        <select id="gsTimeToSuspend">
+          <option value="never">Never</option>
+          <option value="0.08">5 Seconds (test)</option>
+          <option value="5">5 Minutes</option>
+          <option value="15">15 Minutes</option>
+          <option value="30">30 Minutes</option>
+          <option value="60">1 Hour</option>
+          <option value="120">2 Hours</option>
+          <option value="720">12 Hours</option>
+          <option value="1440">1 Day</option>
+        </select>
+      </div>
+
+      <div class="setting-row">
+        <span>Automatically unsuspend tab when focused</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsUnsuspendOnFocus">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Never suspend pinned tabs</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsDontSuspendPinned">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Never suspend tabs with unsaved forms</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsDontSuspendForms">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Never suspend tabs playing audio</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsDontSuspendAudio">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Never suspend active tabs</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsDontSuspendActiveTabs">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+    </section>
+
+    <section class="settings-group">
+
+      <h2>Advanced</h2>
+
+      <div class="setting-row">
+        <span>Do not auto-suspend if offline</span>
+
+        <label class="switch">
+          <input type="checkbox" id="onlineCheck">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Do not auto-suspend if running on battery</span>
+
+        <label class="switch">
+          <input type="checkbox" id="batteryCheck">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <span>Show context menu</span>
+
+        <label class="switch">
+          <input type="checkbox" id="gsAddContextMenu">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-title">Theme</div>
+
+        <select id="gsTheme">
+          <option value="system">System Default</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+
+    </section>
+
+    <section class="settings-group">
+
+      <h2>Whitelist</h2>
+
+      <p class="help-text">
+        Add domains or URLs that should never be suspended.
+      </p>
+
+      <textarea id="gsWhitelist" rows="8" placeholder="google.com&#10;github.com&#10;mail.google.com"></textarea>
+
+    </section>
+
+  </div>
+
+</body>
+
+</html>
